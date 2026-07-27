@@ -1,0 +1,111 @@
+h1 {
+    color: rgb(255, 255, 255); /*ändert die Schriftfarbe weiß*/
+    text-align: center; /*zentiert den Text*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
+    padding: 8px 16px; /*bestimmt den Abstand vom Text zum Rahmen*/
+    width: fit-content; /*bestimmt die Breite des Elements*/
+    margin: auto; /*bestimmt den Abstand vom Rahmen zum Seitenende*/
+    margin-top: 10px; /*bestimmt den Abstand vom Rahmen zum Seitenanfang*/
+    margin-bottom: 30px; /*bestimmt den Abstand vom Rahmen nach unten*/
+    text-shadow:
+        0 0 5px pink,
+        0 0 20px pink,
+        0 0 35px pink,
+        0 0 50px pink; /*macht einen pinken Schatten um den Text*/
+    box-shadow: 
+        20px 0px 0px -10px #FFFFFF, 
+        -20px 0px 0px -10px #FFFFFF, 
+        0px 0px 0px 10px pink, 
+        5px 5px 15px 5px rgba(0,0,0,0); /*erstellt den Rahmen in dem Fall*/
+    }
+
+p {
+    color: rgb(0, 0, 0); /*ändert die Schriftfarbe pink*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Schriftart*/
+    text-align: center; /*zentiert den Text*/
+}
+
+table {
+    text-align: center; /*zentiert den Text*/
+    table-layout: fixed; /*macht alle Spalten gleich breit*/
+    margin-top: 48px; /* bewegt die Tabelle 48pc vom oberen Rand weg */
+    margin-left: 70px; /* bewegt die Tabelle 70px vom linken Rand weg */
+    border-collapse: collapse; /*entfernt den Abstand zwischen den einzelnen Zellen*/
+}
+
+th, td {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Schriftartfür den Tabelleninhalt*/
+    padding: 15px; /*bestimmt den Abstand vom Zelleninhalt zum Rand der Zelle*/
+    background-image: url(assets/images/tile.png);
+    background-size: cover;
+    background-position: center;
+}
+
+th {
+    background-color: rgba(228, 228, 228, 0.5); /*ändert die Hintergrundfarbe der Kopfzeile*/
+}
+
+h2 {
+    text-align: center; /*zentriert den Text von allen h2 Elementen*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart aller h2 Elemente*/
+    text-decoration: underline; /* unterstreicht den Text */
+}
+
+.liste {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
+    text-align: left; /*lässt den Text links anliegen*/
+}
+
+body {
+    max-width: 1200px; /*bestimmt die Breite der Seite*/
+    margin: auto; /*zentriert die gesamte Seite in der mitte*/
+    min-height: 100vh; /*legt die Mindesthöhe für body fest*/
+    background-image: url(assets/images/beach.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.content {
+    display: flex; /*ermöglicht, dass der Kalender und die historischen Ereignisse nebeneinander stehen können*/
+    align-items: center; /*zentriert alle Elemente in der Klasse*/
+    gap: 50px; /*bestimmt den Abstand vom Kalander zu dem Element daneben*/
+}
+
+.ereignisse {
+    flex: 1; /*nutzt den übrigen Platz neben dem Kalander*/
+    min-width: 0; /*erlaubt es bei Platzmangel auch sehr schmal zu werden*/
+}
+
+.highlight {
+    background-image: url(assets/images/tile_bubble.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.saturdays {
+    background-image: url(assets/images/tile_darker1.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.sundays {
+    background-image: url(assets/images/tile_darker2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.rahmen {
+    background-image: url("assets/images/rahmen3.png");
+    background-size: 100% 100%;
+    padding: 40px;
+    width: 509px;
+    height: 399px;
+}
+
+td:hover {
+    background-image: url(assets/images/tile_lighter2.png);
+    background-size: cover;
+    background-position: center;
+}
