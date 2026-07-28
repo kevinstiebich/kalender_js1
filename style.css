@@ -1,7 +1,6 @@
 h1 {
     color: rgb(255, 255, 255); /*ändert die Schriftfarbe weiß*/
     text-align: center; /*zentiert den Text*/
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
     padding: 8px 16px; /*bestimmt den Abstand vom Text zum Rahmen*/
     width: fit-content; /*bestimmt die Breite des Elements*/
     margin: auto; /*bestimmt den Abstand vom Rahmen zum Seitenende*/
@@ -21,20 +20,18 @@ h1 {
 
 p {
     color: rgb(0, 0, 0); /*ändert die Schriftfarbe pink*/
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Schriftart*/
     text-align: center; /*zentiert den Text*/
 }
 
 table {
     text-align: center; /*zentiert den Text*/
     table-layout: fixed; /*macht alle Spalten gleich breit*/
-    margin-top: 48px; /* bewegt die Tabelle 48pc vom oberen Rand weg */
-    margin-left: 70px; /* bewegt die Tabelle 70px vom linken Rand weg */
+    margin-left: 20px; /* rückt die Tabelle ein wenig vom linken Rand weg, falls das Fenster zu klein wird */
+    border: pink 10px solid;
     border-collapse: collapse; /*entfernt den Abstand zwischen den einzelnen Zellen*/
 }
 
 th, td {
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*Schriftartfür den Tabelleninhalt*/
     padding: 15px; /*bestimmt den Abstand vom Zelleninhalt zum Rand der Zelle*/
     background-image: url(assets/images/tile.png);
     background-size: cover;
@@ -47,17 +44,16 @@ th {
 
 h2 {
     text-align: center; /*zentriert den Text von allen h2 Elementen*/
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart aller h2 Elemente*/
     text-decoration: underline; /* unterstreicht den Text */
 }
 
 .liste {
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
     text-align: left; /*lässt den Text links anliegen*/
 }
 
 body {
     max-width: 1200px; /*bestimmt die Breite der Seite*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
     margin: auto; /*zentriert die gesamte Seite in der mitte*/
     min-height: 100vh; /*legt die Mindesthöhe für body fest*/
     background-image: url(assets/images/beach.jpg);
@@ -94,14 +90,6 @@ body {
     background-image: url(assets/images/tile_darker2.png);
     background-size: cover;
     background-position: center;
-}
-
-.rahmen {
-    background-image: url("assets/images/rahmen3.png");
-    background-size: 100% 100%;
-    padding: 40px;
-    width: 509px;
-    height: 399px;
 }
 
 td:hover {
