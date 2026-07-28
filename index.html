@@ -1,99 +1,95 @@
-h1 {
-    color: rgb(255, 255, 255); /*ändert die Schriftfarbe weiß*/
-    text-align: center; /*zentiert den Text*/
-    padding: 8px 16px; /*bestimmt den Abstand vom Text zum Rahmen*/
-    width: fit-content; /*bestimmt die Breite des Elements*/
-    margin: auto; /*bestimmt den Abstand vom Rahmen zum Seitenende*/
-    margin-top: 10px; /*bestimmt den Abstand vom Rahmen zum Seitenanfang*/
-    margin-bottom: 30px; /*bestimmt den Abstand vom Rahmen nach unten*/
-    text-shadow:
-        0 0 5px pink,
-        0 0 20px pink,
-        0 0 35px pink,
-        0 0 50px pink; /*macht einen pinken Schatten um den Text*/
-    box-shadow: 
-        20px 0px 0px -10px #FFFFFF, 
-        -20px 0px 0px -10px #FFFFFF, 
-        0px 0px 0px 10px pink, 
-        5px 5px 15px 5px rgba(0,0,0,0); /*erstellt den Rahmen in dem Fall*/
-    }
+<!DOCTYPE html>
+<html lang="de">
 
-p {
-    color: rgb(0, 0, 0); /*ändert die Schriftfarbe pink*/
-    text-align: center; /*zentiert den Text*/
-}
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Kalenderblatt vom 13.07.2026</title>
+</head>
 
-table {
-    text-align: center; /*zentiert den Text*/
-    table-layout: fixed; /*macht alle Spalten gleich breit*/
-    margin-left: 20px; /* rückt die Tabelle ein wenig vom linken Rand weg, falls das Fenster zu klein wird */
-    border: pink 10px solid;
-    border-collapse: collapse; /*entfernt den Abstand zwischen den einzelnen Zellen*/
-}
+<body>
+  <header>
+    <h1>Kalenderblatt vom 13.07.2026</h1>
+    <p>Der 13. Juli 2026 ist ein Montag und zwar der zweite Montag im Monat Juli des Jahres 2026. Es handelt sich um den
+      194. Tag des Jahres, was bedeutet, dass es noch 171 Tage bis zum Jahresende sind. Der Monat Juli hat insgesamt 31
+      Tage. Heute ist kein gesetzlicher Feiertag in Deutschland.</p>
+  </header>
+  <main>
+    <div class="content">
+          <table>
+            <thead>
+              <tr>
+                <th>Mo</th>
+                <th>Di</th>
+                <th>Mi</th>
+                <th>Do</th>
+                <th>Fr</th>
+                <th class="saturdays">Sa</th>
+                <th class="sundays">So</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="saturdays">4</td>
+                <td class="sundays">5</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td class="saturdays">11</td>
+                <td class="sundays">12</td>
+              </tr>
+              <tr>
+                <td class="highlight">13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td class="saturdays">18</td>
+                <td class="sundays">19</td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td class="saturdays">25</td>
+                <td class="sundays">26</td>
+              </tr>
+              <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td class="saturdays"></td>
+                <td class="sundays"></td>
+              </tr>
+            </tbody>
+          </table>
+      <div class="ereignisse liste">
+        <h2>Historische Ereignisse am 13. Juli</h2>
+        <ul>
+          <li>1878: Der Berliner Kongress endet mit dem Berliner Vertrag, der die politische Ordnung auf dem Balkan nach dem
+            Russisch-Osmanischen Krieg neu regelt.</li>
+          <li>1930: In Uruguay beginnt die erste Fußball-Weltmeisterschaft der Geschichte.</li>
+          <li>1960: Die Demokratische Partei der USA nominiert John F. Kennedy als ihren Präsidentschaftskandidaten.</li>
+          <li>1977: Ein durch Blitzeinschläge ausgelöster Stromausfall legt New York City für mehr als einen Tag weitgehend
+              lahm.</li>
+          <li>1985: Die Benefizkonzerte Live Aid finden gleichzeitig in London und Philadelphia statt und sammeln Spenden
+                gegen die Hungersnot in Äthiopien.</li>
+              </ul>
+            </div>
+    </div>
+  </main>
+</body>
 
-th, td {
-    padding: 15px; /*bestimmt den Abstand vom Zelleninhalt zum Rand der Zelle*/
-    background-image: url(assets/images/tile.png);
-    background-size: cover;
-    background-position: center;
-}
-
-th {
-    background-color: rgba(228, 228, 228, 0.5); /*ändert die Hintergrundfarbe der Kopfzeile*/
-}
-
-h2 {
-    text-align: center; /*zentriert den Text von allen h2 Elementen*/
-    text-decoration: underline; /* unterstreicht den Text */
-}
-
-.liste {
-    text-align: left; /*lässt den Text links anliegen*/
-}
-
-body {
-    max-width: 1200px; /*bestimmt die Breite der Seite*/
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /*ändert die Schriftart*/
-    margin: auto; /*zentriert die gesamte Seite in der mitte*/
-    min-height: 100vh; /*legt die Mindesthöhe für body fest*/
-    background-image: url(assets/images/beach.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.content {
-    display: flex; /*ermöglicht, dass der Kalender und die historischen Ereignisse nebeneinander stehen können*/
-    align-items: center; /*zentriert alle Elemente in der Klasse*/
-    gap: 50px; /*bestimmt den Abstand vom Kalander zu dem Element daneben*/
-}
-
-.ereignisse {
-    flex: 1; /*nutzt den übrigen Platz neben dem Kalander*/
-    min-width: 0; /*erlaubt es bei Platzmangel auch sehr schmal zu werden*/
-}
-
-.highlight {
-    background-image: url(assets/images/tile_bubble.png);
-    background-size: cover;
-    background-position: center;
-}
-
-.saturdays {
-    background-image: url(assets/images/tile_darker1.png);
-    background-size: cover;
-    background-position: center;
-}
-
-.sundays {
-    background-image: url(assets/images/tile_darker2.png);
-    background-size: cover;
-    background-position: center;
-}
-
-td:hover {
-    background-image: url(assets/images/tile_lighter2.png);
-    background-size: cover;
-    background-position: center;
-}
+</html>
