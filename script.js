@@ -1,6 +1,5 @@
-const date = new Date("2026-07-27");
-const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear();
-
+const date = new Date();
+const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear(); //speichert den heutigen Tag im Format XX.XX.XXXX in dateToday
 
 let headline = document.getElementById("main-headline");
 let title = document.getElementById("title");
@@ -12,7 +11,8 @@ const weekdays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Fr
 const numberOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const numberOfWeekdays = ["erste", "zweite", "dritte", "vierte", "fünfte"];
 
-function DayOfTheYear() {
+//rechnet aus der wievielte Tag des Jahres heute ist
+function dayOfTheYear() {
     let days = date.getDate();
     for (let i = 0; i < date.getMonth(); i++) {
         days += numberOfDays[i];
@@ -20,23 +20,36 @@ function DayOfTheYear() {
     return days;
 }
 
-function DaysRemaining() {
+//rechnet aus wieviele Tage dieses Jahr noch hat
+function daysRemaining() {
     let remaining;
     if ((date.getFullYear() % 4 == 0 && date.getFullYear() % 100 != 0) || date.getFullYear() % 400 == 0) {
         remaining = 366;
     } else remaining = 365;
-    remaining -= DayOfTheYear();
-    return remaining;
+    return remaining -= dayOfTheYear();
 }
 
+//prüft ob heute ein gesetzlicher Feiertag ist
 function isHoliday() {
     let isHoliday;
-    if ((date.getDate() == 1 && date.getMonth() + 1 == 1) || (date.getDate() == 3 && date.getMonth() + 1 == 4) || (date.getDate() == 6 && date.getMonth() + 1 == 4) || (date.getDate() == 1 && date.getMonth() + 1 == 5) || (date.getDate() == 14 && date.getMonth() + 1 == 5) || (date.getDate() == 25 && date.getMonth() + 1 == 5) || (date.getDate() == 3 && date.getMonth() + 1 == 10) || (date.getDate() == 25 && date.getMonth() + 1 == 12) || (date.getDate() == 26 && date.getMonth() + 1 == 12)) {
+    if ((date.getDate() == 1 && date.getMonth() + 1 == 1) || (date.getDate() == 3 && date.getMonth() + 1 == 4) || (date.getDate() == 6 && date.getMonth() + 1 == 4) || 
+    (date.getDate() == 1 && date.getMonth() + 1 == 5) || (date.getDate() == 14 && date.getMonth() + 1 == 5) || (date.getDate() == 25 && date.getMonth() + 1 == 5) || 
+    (date.getDate() == 3 && date.getMonth() + 1 == 10) || (date.getDate() == 25 && date.getMonth() + 1 == 12) || (date.getDate() == 26 && date.getMonth() + 1 == 12)) {
         isHoliday = "ein";
     } else isHoliday = "kein";
     return isHoliday;
 }
 
+//rechnet aus der wievielte Wochentag heute diesen Monat ist
+function getNumberOfWeekdays() {
+    if (date.getDate() % 7 == 0) {
+        return numberOfWeekdays[Math.floor((date.getDate() / 7)) - 1];
+    } else return numberOfWeekdays[Math.floor((date.getDate() / 7))];
+}
 
+//macht den Introtext dynamisch, immer auf den heutigen Tag bezogen
 let intro = document.getElementById("intro");
-intro.textContent = "Der " + String(date.getDate()).padStart(2, "0") + ". " + months[date.getMonth()] + " " + date.getFullYear() + " ist ein " + weekdays[date.getDay()] + " und zwar der " + numberOfWeekdays[Math.floor((date.getDate() / 7)) - 1] + " " + weekdays[date.getDay()] + " im Monat " + months[date.getMonth()] + " des Jahres " + date.getFullYear() + ". Es handelt sich um den " + DayOfTheYear() + ". Tag des Jahres, was bedeutet, dass es noch " + DaysRemaining() + " Tage bis zum Jahresende sind. Der Monat " + months[date.getMonth()] + " hat insgesamt " + numberOfDays[date.getMonth()] + " Tage. Heute ist " + isHoliday() + " gesetzlicher Feiertag in Deutschland."
+intro.textContent = "Der " + String(date.getDate()).padStart(2, "0") + ". " + months[date.getMonth()] + " " + date.getFullYear() + " ist ein " + weekdays[date.getDay()] + " und zwar der " + 
+getNumberOfWeekdays() + " " + weekdays[date.getDay()] + " im Monat " + months[date.getMonth()] + " des Jahres " + date.getFullYear() + ". Es handelt sich um den " + 
+dayOfTheYear() + ". Tag des Jahres, was bedeutet, dass es noch " + daysRemaining() + " Tage bis zum Jahresende sind. Der Monat " + months[date.getMonth()] + " hat insgesamt " + numberOfDays[date.getMonth()] + 
+" Tage. Heute ist " + isHoliday() + " gesetzlicher Feiertag in Deutschland."
