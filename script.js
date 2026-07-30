@@ -1,4 +1,4 @@
-const date = new Date();
+const date = new Date("2026-08-01");
 const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear(); //speichert den heutigen Tag im Format XX.XX.XXXX in dateToday
 const months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 const weekdays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
@@ -17,6 +17,12 @@ intro.textContent = "Der " + String(date.getDate()).padStart(2, "0") + ". " + mo
 getNumberOfWeekdays() + " " + weekdays[date.getDay()] + " im Monat " + months[date.getMonth()] + " des Jahres " + date.getFullYear() + ". Es handelt sich um den " + 
 dayOfTheYear() + ". Tag des Jahres, was bedeutet, dass es noch " + daysRemaining() + " Tage bis zum Jahresende sind. Der Monat " + months[date.getMonth()] + " hat insgesamt " + numberOfDays[date.getMonth()] + 
 " Tage. Heute ist " + isHoliday() + " gesetzlicher Feiertag in Deutschland."
+
+//passt den Kalender auf den aktuellen Monat an (startet und endet am korrekten Wochentag)
+for (let i = 0; i < numberOfDays[date.getMonth()]; i++) {
+    let changeDay = document.getElementById("calendar" + (i + getFirstWeekday()));
+    changeDay.textContent = i + 1;
+}
 
 //rechnet aus der wievielte Tag des Jahres heute ist
 function dayOfTheYear() {
