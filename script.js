@@ -1,4 +1,4 @@
-const date = new Date("2026-05-25");
+const date = new Date();
 const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear(); //speichert den heutigen Tag im Format XX.XX.XXXX in dateToday
 const months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 const weekdays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
@@ -58,16 +58,19 @@ function isHoliday() {
     let ascensionOfChrist = calcHolidays(40);
     let whitMonday = calcHolidays(51);
     let corpusChristi = calcHolidays(60);
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
 
-    if ((date.getDate() == 1 && date.getMonth() + 1 == 1) || (date.getDate() == easter[1] && date.getMonth() + 1 == easter[0]) || 
-    (date.getDate() == goodFriday[1] && date.getMonth() + 1 == goodFriday[0]) || (date.getDate() == easterMonday[1] && date.getMonth() + 1 == easterMonday[0]) || 
-    (date.getDate() == ascensionOfChrist[1] && date.getMonth() + 1 == ascensionOfChrist[0]) || (date.getDate() == whitMonday[1] && date.getMonth() + 1 == whitMonday[0]) || 
-    (date.getDate() == corpusChristi[1] && date.getMonth() + 1 == corpusChristi[0]) || 
-    (date.getDate() == 3 && date.getMonth() + 1 == 10) || (date.getDate() == 25 && date.getMonth() + 1 == 12) || (date.getDate() == 26 && date.getMonth() + 1 == 12)) {
-        isHoliday = "ein";
-    } else isHoliday = "kein";
+    let holidays = [[1, 1], [easter[1], easter[0]], [goodFriday[1], goodFriday[0]], [easterMonday[1], easterMonday[0]], [ascensionOfChrist[1], ascensionOfChrist[0]], 
+    [whitMonday[1], whitMonday[0]], [corpusChristi[1], corpusChristi[0]], [3, 10], [25, 12], [26, 12]];
 
-    return isHoliday;
+    for (let i = 0; i < holidays.length; i++) {
+        if (day == holidays[i][0] && month == holidays[i][1]) {
+            return isHoliday = "ein";
+        }
+    }
+
+    return isHoliday = "kein";
 }
 
 //rechnet aus der wievielte Wochentag heute diesen Monat ist
