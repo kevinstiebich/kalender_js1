@@ -9,14 +9,35 @@ const numberOfWeekdays = ["erste", "zweite", "dritte", "vierte", "fünfte"];
 let headline = document.getElementById("main-headline");
 let title = document.getElementById("title");
 headline.textContent = "Kalenderblatt vom " + dateToday;
-title.textContent = "Kalenderblatt vom " + dateToday;
+title.textContent = "Kalenderblatt vom " + dateToday
 
-//bezieht den Introtext auf das heutige Datum
-let intro = document.getElementById("intro");
-intro.textContent = "Der " + String(date.getDate()).padStart(2, "0") + ". " + months[date.getMonth()] + " " + date.getFullYear() + " ist ein " + weekdays[date.getDay()] + " und zwar der " + 
-getNumberOfWeekdays() + " " + weekdays[date.getDay()] + " im Monat " + months[date.getMonth()] + " des Jahres " + date.getFullYear() + ". Es handelt sich um den " + 
-dayOfTheYear() + ". Tag des Jahres, was bedeutet, dass es noch " + daysRemaining() + " Tage bis zum Jahresende sind. Der Monat " + months[date.getMonth()] + " hat insgesamt " + numberOfDays[date.getMonth()] + 
-" Tage. Heute ist " + isHoliday() + " gesetzlicher Feiertag in Deutschland."
+//ändert den Text mittels Tags im HTML Text
+let dayToday = document.getElementById("dayToday");
+dayToday.textContent = String(date.getDate()).padStart(2, "0");
+let monthString1 = document.getElementById("monthString1");
+monthString1.textContent = months[date.getMonth()];
+let monthString2 = document.getElementById("monthString2");
+monthString2.textContent = months[date.getMonth()];
+let monthString3 = document.getElementById("monthString3");
+monthString3.textContent = months[date.getMonth()];
+let thisYear1 = document.getElementById("year1");
+thisYear1.textContent = date.getFullYear();
+let thisYear2 = document.getElementById("year2");
+thisYear2.textContent = date.getFullYear();
+let weekdayToday1 = document.getElementById("weekdayToday1");
+weekdayToday1.textContent = weekdays[date.getDay()];
+let weekdayToday2 = document.getElementById("weekdayToday2");
+weekdayToday2.textContent = weekdays[date.getDay()];
+let weekdayCount = document.getElementById("weekdayCount");
+weekdayCount.textContent = getNumberOfWeekdays();
+let xDayOfTheYear = document.getElementById("xDayOfTheYear");
+xDayOfTheYear.textContent = dayOfTheYear();
+let xDaysRemaining = document.getElementById("xDaysRemaining");
+xDaysRemaining.textContent = daysRemaining();
+let daysThisMonth = document.getElementById("daysThisMonth");
+daysThisMonth.textContent = numberOfDays[date.getMonth()];
+let holidayToday = document.getElementById("holidayToday");
+holidayToday.textContent = isHoliday();
 
 //passt den Kalender auf den aktuellen Monat an (startet und endet am korrekten Wochentag)
 for (let i = 0; i < numberOfDays[date.getMonth()]; i++) {
