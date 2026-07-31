@@ -1,9 +1,9 @@
 const date = new Date();
 const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear(); //speichert den heutigen Tag im Format XX.XX.XXXX in dateToday
 const months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-const weekdays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 const numberOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const numberOfWeekdays = ["erste", "zweite", "dritte", "vierte", "fünfte"];
+const options = {weekday: "long"};
 
 //setzt das heutige Datum in Überschrift h1 und in den Seitentitel
 let headline = document.getElementById("main-headline");
@@ -25,9 +25,9 @@ thisYear1.textContent = date.getFullYear();
 let thisYear2 = document.getElementById("year2");
 thisYear2.textContent = date.getFullYear();
 let weekdayToday1 = document.getElementById("weekdayToday1");
-weekdayToday1.textContent = weekdays[date.getDay()];
+weekdayToday1.textContent = date.toLocaleDateString("de-DE", options);
 let weekdayToday2 = document.getElementById("weekdayToday2");
-weekdayToday2.textContent = weekdays[date.getDay()];
+weekdayToday2.textContent = date.toLocaleDateString("de-DE", options);
 let weekdayCount = document.getElementById("weekdayCount");
 weekdayCount.textContent = getNumberOfWeekdays();
 let xDayOfTheYear = document.getElementById("xDayOfTheYear");
@@ -143,8 +143,6 @@ function calcHolidays(addend) {
     return holiday;
 }
 
-//____________________________@REVIEWER: Hier kannst du erstmal aufhören zu lesen_____________________________________________________________________________________________
-
 //rechnet aus, welcher Tag dieses Jahr der Doomsday ist (funktioniert nur für die Jahre 2000-2099)
 function getDoomsday() {
     let quotient = Math.floor(date.getFullYear() - 2000) / 12;
@@ -153,10 +151,10 @@ function getDoomsday() {
     let sum = quotient + rest + restDiv4;
     let addCenturyAnchor = sum + 2; //für 2000er Jahre
     let doomsdayNo = Math.floor(addCenturyAnchor % 7);
-    return doomsdayNo; //weekdays[doomsdayNo] um den Wochentag zu bekommen
+    return doomsdayNo;
 }
 
-//rechnet aus, auf welchen Wochentag der 1. dieses Monats fällt
+//rechnet aus, auf welchen Wochentag der 1. dieses Monats fällt - mit date.getDay() ändern!!
 function getFirstWeekday() {
     let firstWeekdayNo;
     let doomsday = getDoomsday();
@@ -267,5 +265,5 @@ function getFirstWeekday() {
             break;
         }
 
-    return firstWeekdayNo; //weekdays[firstWeekdayNo] um den Wochentag des 1. des Monats zu bekommen
+    return firstWeekdayNo;
 }
