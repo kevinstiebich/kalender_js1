@@ -1,4 +1,4 @@
-const date = new Date();
+const date = new Date("2026-05-25");
 const dateToday = String(date.getDate()).padStart(2, "0") + "." + String(date.getMonth() + 1).padStart(2, "0") + "." + date.getFullYear(); //speichert den heutigen Tag im Format XX.XX.XXXX in dateToday
 const months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 const weekdays = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
@@ -52,11 +52,21 @@ function daysRemaining() {
 //prüft ob heute ein gesetzlicher Feiertag ist
 function isHoliday() {
     let isHoliday;
-    if ((date.getDate() == 1 && date.getMonth() + 1 == 1) || (date.getDate() == 3 && date.getMonth() + 1 == 4) || (date.getDate() == 6 && date.getMonth() + 1 == 4) || 
-    (date.getDate() == 1 && date.getMonth() + 1 == 5) || (date.getDate() == 14 && date.getMonth() + 1 == 5) || (date.getDate() == 25 && date.getMonth() + 1 == 5) || 
+    let easter = calcEaster();
+    let goodFriday = calcHolidays(-2);
+    let easterMonday = calcHolidays(1);
+    let ascensionOfChrist = calcHolidays(40);
+    let whitMonday = calcHolidays(51);
+    let corpusChristi = calcHolidays(60);
+
+    if ((date.getDate() == 1 && date.getMonth() + 1 == 1) || (date.getDate() == easter[1] && date.getMonth() + 1 == easter[0]) || 
+    (date.getDate() == goodFriday[1] && date.getMonth() + 1 == goodFriday[0]) || (date.getDate() == easterMonday[1] && date.getMonth() + 1 == easterMonday[0]) || 
+    (date.getDate() == ascensionOfChrist[1] && date.getMonth() + 1 == ascensionOfChrist[0]) || (date.getDate() == whitMonday[1] && date.getMonth() + 1 == whitMonday[0]) || 
+    (date.getDate() == corpusChristi[1] && date.getMonth() + 1 == corpusChristi[0]) || 
     (date.getDate() == 3 && date.getMonth() + 1 == 10) || (date.getDate() == 25 && date.getMonth() + 1 == 12) || (date.getDate() == 26 && date.getMonth() + 1 == 12)) {
         isHoliday = "ein";
     } else isHoliday = "kein";
+
     return isHoliday;
 }
 
@@ -65,6 +75,48 @@ function getNumberOfWeekdays() {
     if (date.getDate() % 7 == 0) {
         return numberOfWeekdays[Math.floor((date.getDate() / 7)) - 1];
     } else return numberOfWeekdays[Math.floor((date.getDate() / 7))];
+}
+
+function calcEaster() {
+    let year = date.getFullYear();
+    let a = year % 19;
+    let b = Math.floor(year / 100);
+    let c = year % 100;
+    let d = Math.floor(b / 4);
+    let e = b % 4;
+    let f = Math.floor((b + 8) / 25);
+    let g = Math.floor((b - f + 1) / 3);
+    let h = (19 * a + b - d - g + 15) % 30;
+    let i = Math.floor(c / 4);
+    let k = c % 4;
+    let l = (32 + 2 * e + 2 * i - h - k) % 7;
+    let m = Math.floor((a + 11 * h + 22 * l) / 451);
+
+    let month = Math.floor((h + l - 7 * m + 114) / 31);
+    let day = ((h + l - 7 * m + 114) % 31) + 1;
+
+    let easterMonthDay = [month, day];
+    return easterMonthDay;
+}
+
+function calcHolidays(addend) {
+    let holiday = calcEaster();
+    holiday[1] += addend;
+    console.log("davor: " + holiday);
+    if (addend > 0) {
+        while (holiday[1] > numberOfDays[holiday[0]]) {
+            holiday[1] -= numberOfDays[holiday[0]];
+            holiday[0]++;
+            console.log("im while: " + holiday);
+        }
+    } else {
+        while (holiday[1] < 1) {
+            holiday[1] += numberOfDays[holiday[0] - 1];
+            holiday[0]--;
+        }
+    }
+    console.log("danach: " + holiday);
+    return holiday;
 }
 
 //____________________________@REVIEWER: Hier kannst du erstmal aufhören zu lesen_____________________________________________________________________________________________
