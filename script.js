@@ -155,7 +155,7 @@ function getDoomsday() {
 }
 
 //rechnet aus, auf welchen Wochentag der 1. dieses Monats fällt - mit date.getDay() ändern!!
-function getFirstWeekday() {
+/* function getFirstWeekday() {
     let firstWeekdayNo;
     let doomsday = getDoomsday();
     let moduloThisMonth;
@@ -266,4 +266,4 @@ function getFirstWeekday() {
         }
 
     return firstWeekdayNo;
-}
+} */ --auskommentiert, da neue Aufgabe und ich will das Problem anders lösen
